@@ -18,7 +18,7 @@ const telegram = {
 };
 
 const metamask = {
-    authenticate: require('./metamask/authenticate'),
+    authenticate: require('./metamask/buy co'),
     buyCoins: require('./metamask/buyCoins'),
     sellCoins: require('./metamask/sellCoins')
 };
@@ -44,10 +44,10 @@ const stripe = {
 
 const pumpfun = {
     launchCoin: require('./pumpfun/launchCoin'),
-    buyCoins: require('./pumpfun/buyCoins'),
-    sellCoins: require('./pumpfun/sellCoins'),
+    buyCoins: require('./metamask/buyCoins'),
+    sellCoins: require('./metamask/sellCoins'),
     aiIntegration: require('./pumpfun/aiIntegration'),
-    createImages: require('./pumpfun/createImages')
+    createImages: require('./generals/createImages')
 };
 
 const general_func = {
