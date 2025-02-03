@@ -14,7 +14,7 @@ const uploadImage = async (botToken, chatId, imagePath) => {
         });
         return response.data;
     } catch (error) {
-        console.error('Error uploading image:', error);
+        console.error('Error uploading image:', error.response ? error.response.data : error.message);
         throw error;
     }
 };

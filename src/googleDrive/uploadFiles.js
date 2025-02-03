@@ -1,4 +1,4 @@
-import axios from 'axios';
+const axios = require('axios');
 
 class GoogleDrive {
     constructor(apiKey) {

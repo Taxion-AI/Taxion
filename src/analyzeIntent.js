@@ -60,7 +60,7 @@ async function analyzeIntent(input) {
         console.log('Categorized intents:', categorizedIntents);
         return categorizedIntents;
     } catch (error) {
-        console.error('Error analyzing input:', error.message);
+        console.error('Error analyzing input:', error.response ? error.response.data : error.message);
         console.error('Stack trace:', error.stack);
         throw error;
     }

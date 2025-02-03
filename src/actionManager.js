@@ -63,7 +63,7 @@ const processMultipleIntents = async (intents) => {
             results.push(result);
             addToBuffer(intents[i], result);
         } catch (error) {
-            console.error(`Error processing intent ${i + 1}:`, error);
+            console.error(`Error processing intent ${i + 1}:`, error.response ? error.response.data : error.message);
             results.push({ error: error.message });
             addToBuffer(intents[i], { error: error.message });
         }
@@ -81,7 +81,7 @@ const retryFailedIntents = async () => {
             results.push(result);
             buffer[buffer.indexOf(failedIntents[i])].result = result;
         } catch (error) {
-            console.error(`Error retrying intent ${i + 1}:`, error);
+            console.error(`Error retrying intent ${i + 1}:`, error.response ? error.response.data : error.message);
             results.push({ error: error.message });
         }
     }

@@ -11,7 +11,7 @@ const sendMessage = async (botToken, chatId, text) => {
         const response = await axios.post(url, params);
         return response.data;
     } catch (error) {
-        console.error('Error sending message:', error);
+        console.error('Error sending message:', error.response ? error.response.data : error.message);
         throw error;
     }
 };
