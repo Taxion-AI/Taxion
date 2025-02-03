@@ -1,4 +1,4 @@
-const axios = require('axios');
+import axios from 'axios';
 
 class Stripe {
     constructor(apiKey) {
@@ -8,13 +8,12 @@ class Stripe {
 
     async authenticate() {
         try {
-            // Fixed the authentication endpoint
-            const response = await axios.post(`${this.baseUrl}/oauth/token`, {
+            const response = await axios.post(`${this.baseUrl}/auth`, {
                 apiKey: this.apiKey
             });
             return response.data;
         } catch (error) {
-            console.error("Error authenticating with Stripe:", error.response ? error.response.data : error.message);
+            console.error("Error authenticating with Stripe:", error);
             throw error;
         }
     }
@@ -24,13 +23,13 @@ class Stripe {
             const authData = await this.authenticate();
             const response = await axios.get(`${this.baseUrl}/balance`, {
                 headers: {
-                    Authorization: `Bearer ${authData.access_token}`,
+                    Authorization: `Bearer ${authData.token}`,
                     "Content-Type": "application/json"
                 }
             });
             return response.data;
         } catch (error) {
-            console.error("Error retrieving account balance from Stripe:", error.response ? error.response.data : error.message);
+            console.error("Error retrieving account balance from Stripe:", error);
             throw error;
         }
     }
