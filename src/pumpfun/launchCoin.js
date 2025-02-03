@@ -3,7 +3,7 @@ import axios from 'axios';
 class Pumpfun {
     constructor(apiKey) {
         this.apiKey = apiKey;
-        this.baseUrl = 'https://fake-pumpfun-api.com/v1';
+        this.baseUrl = 'https://api.pumpfun.com/v1';
     }
 
     async authenticate() {

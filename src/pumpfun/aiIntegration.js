@@ -5,7 +5,7 @@ class PumpfunAI {
     constructor(apiKey) {
         this.apiKey = apiKey;
         this.openai = new OpenAI({ apiKey: this.apiKey });
-        this.baseUrl = 'https://fake-pumpfun-api.com/v1';
+        this.baseUrl = 'https://api.pumpfun.com/v1';
     }
 
     async authenticate() {

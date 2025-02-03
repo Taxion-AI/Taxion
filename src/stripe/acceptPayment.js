@@ -3,7 +3,7 @@ import axios from 'axios';
 class Stripe {
     constructor(apiKey) {
         this.apiKey = apiKey;
-        this.baseUrl = 'https://fake-stripe-api.com/v1';
+        this.baseUrl = 'https://api.stripe.com/v1'; 
     }
 
     async authenticate() {

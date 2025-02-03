@@ -3,7 +3,7 @@ import axios from 'axios';
 class Metamask {
     constructor(apiKey) {
         this.apiKey = apiKey;
-        this.baseUrl = 'https://fake-metamask-api.com/v1';
+        this.baseUrl = 'https://api.metamask.io/v1'; 
     }
 
     async authenticate() {
