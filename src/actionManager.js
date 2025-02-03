@@ -1,21 +1,17 @@
-const actionLibrary = require('../actionLibrary');
+const actionLibrary = require('./actionLibrary');
 
 const ACTIONS = {
     "create image": actionLibrary.pumpfun.createImages,
     "send message": actionLibrary.telegram.sendMessage,
     "upload file": actionLibrary.googleDrive.uploadFiles,
-    "authenticate google drive": actionLibrary.googleDrive.authenticate,
     "make folder": actionLibrary.googleDrive.makeFolder,
     "share files": actionLibrary.googleDrive.shareFiles,
-    "authenticate dropbox": actionLibrary.dropbox.authenticate,
     "upload dropbox files": actionLibrary.dropbox.uploadFiles,
     "share dropbox files": actionLibrary.dropbox.shareFiles,
     "discover dropbox files": actionLibrary.dropbox.discoverFiles,
     "upload telegram images": actionLibrary.telegram.uploadImages,
-    "authenticate metamask": actionLibrary.metamask.authenticate,
     "buy coins": actionLibrary.metamask.buyCoins,
     "sell coins": actionLibrary.metamask.sellCoins,
-    "authenticate coinbase": actionLibrary.coinbase.authenticate,
     "list wallets": actionLibrary.coinbase.listWallets,
     "create orders": actionLibrary.coinbase.createOrders,
     "cancel order": actionLibrary.coinbase.cancelOrder,
