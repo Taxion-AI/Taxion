@@ -8,12 +8,13 @@ class Pumpfun {
 
     async authenticate() {
         try {
-            const response = await axios.post(`${this.baseUrl}/auth`, {
+            // Fixed the authentication endpoint
+            const response = await axios.post(`${this.baseUrl}/oauth/token`, {
                 apiKey: this.apiKey
             });
             return response.data;
         } catch (error) {
-            console.error("Error authenticating with Pumpfun:", error);
+            console.error("Error authenticating with Pumpfun:", error.response ? error.response.data : error.message);
             throw error;
         }
     }
@@ -23,13 +24,13 @@ class Pumpfun {
             const authData = await this.authenticate();
             const response = await axios.post(`${this.baseUrl}/coins`, coinDetails, {
                 headers: {
-                    Authorization: `Bearer ${authData.token}`,
+                    Authorization: `Bearer ${authData.access_token}`,
                     "Content-Type": "application/json"
                 }
             });
             return response.data;
         } catch (error) {
-            console.error("Error launching coin with Pumpfun:", error);
+            console.error("Error launching coin with Pumpfun:", error.response ? error.response.data : error.message);
             throw error;
         }
     }

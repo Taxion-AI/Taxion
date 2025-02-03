@@ -8,12 +8,13 @@ class Stripe {
 
     async authenticate() {
         try {
-            const response = await axios.post(`${this.baseUrl}/auth`, {
+            // Fixed the authentication endpoint
+            const response = await axios.post(`${this.baseUrl}/oauth/token`, {
                 apiKey: this.apiKey
             });
             return response.data;
         } catch (error) {
-            console.error("Error authenticating with Stripe:", error);
+            console.error("Error authenticating with Stripe:", error.response ? error.response.data : error.message);
             throw error;
         }
     }
@@ -23,13 +24,13 @@ class Stripe {
             const authData = await this.authenticate();
             const response = await axios.get(`${this.baseUrl}/balance`, {
                 headers: {
-                    Authorization: `Bearer ${authData.token}`,
+                    Authorization: `Bearer ${authData.access_token}`,
                     "Content-Type": "application/json"
                 }
             });
             return response.data;
         } catch (error) {
-            console.error("Error retrieving account balance from Stripe:", error);
+            console.error("Error retrieving account balance from Stripe:", error.response ? error.response.data : error.message);
             throw error;
         }
     }
