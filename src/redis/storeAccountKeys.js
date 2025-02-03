@@ -2,6 +2,10 @@ const { MetaMaskSDK } = require('@metamask/sdk');
 const redis = require('redis');
 const client = redis.createClient();
 
+client.on('error', (err) => {
+    console.error('Redis client error:', err);
+});
+
 async function storeAccountKeys() {
     const sdk = new MetaMaskSDK();
     try {
@@ -12,21 +16,34 @@ async function storeAccountKeys() {
         }
 
         for (const account of accounts) {
-            const accountKey = await sdk.wallet.getPrivateKey(account);
-            client.set(`accountKey:${account}`, accountKey, redis.print);
-            console.log(`Stored key for account ${account}`);
+            try {
+                const accountKey = await sdk.wallet.getPrivateKey(account);
+                client.set(`accountKey:${account}`, accountKey, redis.print);
+                console.log(`Stored key for account ${account}`);
 
-            client.get(`accountKey:${account}`, (err, key) => {
-                if (err) throw err;
-                console.log(`Retrieved key for account ${account}: ${key}`);
-            });
+                client.get(`accountKey:${account}`, (err, key) => {
+                    if (err) {
+                        console.error(`Error retrieving key for account ${account}:`, err);
+                        return;
+                    }
+                    console.log(`Retrieved key for account ${account}: ${key}`);
+                });
+            } catch (innerError) {
+                console.error(`Error processing account ${account}:`, innerError);
+            }
         }
 
         client.keys('accountKey:*', (err, keys) => {
-            if (err) throw err;
+            if (err) {
+                console.error('Error fetching keys from Redis:', err);
+                return;
+            }
             keys.forEach(key => {
                 client.get(key, (err, value) => {
-                    if (err) throw err;
+                    if (err) {
+                        console.error(`Error retrieving value for key ${key}:`, err);
+                        return;
+                    }
                     console.log(`Stored account key in Redis: ${value}`);
                 });
             });
