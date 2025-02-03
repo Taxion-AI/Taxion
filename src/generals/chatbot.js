@@ -33,7 +33,7 @@ class Chatbot {
     async chat(prompt) {
         try {
             const refinedPrompt = await this.refinePrompt(prompt);
-            const chatUrl = "https://api.chatbot.com/v1/chat";
+            const chatUrl = "https://await.chat.openai.com/api";
             const response = await axios.post(chatUrl, { query: refinedPrompt }, {
                 headers: {
                     Authorization: `Bearer ${this.apiKey}`,

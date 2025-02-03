@@ -33,7 +33,7 @@ class HottestTopicSearch {
     async searchHottestTopic(prompt) {
         try {
             const refinedPrompt = await this.refinePrompt(prompt);
-            const searchUrl = "https://api.hottesttopics.com/v1/search";
+            const searchUrl = "https://search.brave.com/api/v3/";
             const response = await axios.post(searchUrl, { query: refinedPrompt }, {
                 headers: {
                     Authorization: `Bearer ${this.apiKey}`,

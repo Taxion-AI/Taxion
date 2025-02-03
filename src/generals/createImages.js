@@ -5,7 +5,7 @@ class CreateImages {
     constructor(apiKey) {
         this.apiKey = apiKey;
         this.openai = new OpenAI({ apiKey: this.apiKey });
-        this.baseUrl = 'https://fake-image-api.com/v1';
+        this.baseUrl = 'https://await.chat.openai.com/api';
     }
 
     async authenticate() {

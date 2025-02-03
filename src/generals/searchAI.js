@@ -33,7 +33,7 @@ class SearchAI {
     async search(prompt) {
         try {
             const refinedPrompt = await this.refinePrompt(prompt);
-            const searchUrl = "https://api.searchengine.com/v1/search";
+            const searchUrl = "https://await.chat.openai.com/api";
             const response = await axios.post(searchUrl, { query: refinedPrompt }, {
                 headers: {
                     Authorization: `Bearer ${this.apiKey}`,
