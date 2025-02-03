@@ -66,5 +66,5 @@ module.exports = {
     redis,
     stripe,
     pumpfun,
-    general_func,
+    general_func
 };
