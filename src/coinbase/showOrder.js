@@ -1,7 +1,7 @@
 const axios = require('axios');
 
-async function listWallets(apiKey) {
-    const url = 'https://api.cdp.coinbase.com/v3/wallets';
+async function showOrder(apiKey, orderId) {
+    const url = `https://api.cdp.coinbase.com/v3/orders/${orderId}`;
     try {
         const response = await axios.get(url, {
             headers: {
@@ -10,9 +10,9 @@ async function listWallets(apiKey) {
         });
         return response.data;
     } catch (error) {
-        console.error('Error listing wallets:', error.message);
-        throw new Error('Failed to list wallets');
+        console.error('Error showing order:', error.message);
+        throw new Error('Failed to show order');
     }
 }
 
-module.exports = listWallets;
+module.exports = showOrder;

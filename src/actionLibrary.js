@@ -23,7 +23,10 @@ const metamask = {
 const coinbase = {
     listWallets: require('./coinbase/listWallets'),
     createOrders: require('./coinbase/createOrders'),
-    cancelOrder: require('./coinbase/cancelOrder')
+    cancelOrder: require('./coinbase/cancelOrder'),
+    showOrder: require('./coinbase/showOrder'), 
+    listOrders: require('./coinbase/listOrders'), 
+    refundOrder: require('./coinbase/refundOrder') 
 };
 
 const redis = {
