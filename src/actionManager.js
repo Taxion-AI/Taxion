@@ -25,7 +25,8 @@ const ACTIONS = {
     "hottest topic search": actionLibrary.general_func.hottestTopicSearch,
     "search AI": actionLibrary.general_func.searchAI,
     "chatbot": actionLibrary.general_func.chatbot,
-    "analyze intent": actionLibrary.general_func.analyzeIntent
+    "analyze intent": actionLibrary.general_func.analyzeIntent,
+    "send email": actionLibrary.sendEmail
 };
 
 const buffer = [];
@@ -49,7 +50,12 @@ const clearBuffer = () => {
 const processSingleIntent = async (intent) => {
     const action = ACTIONS[intent];
     if (action) {
-        return await action();
+        try {
+            return await action();
+        } catch (error) {
+            console.error(`Error processing intent: ${intent}`, error.response ? error.response.data : error.message);
+            throw error;
+        }
     } else {
         throw new Error(`Unknown intent: ${intent}`);
     }
@@ -89,13 +95,9 @@ const retryFailedIntents = async () => {
     return results;
 };
 
-const getBuffer = () => {
-    return buffer;
-};
+const getBuffer = () => buffer;
 
-const getBufferSize = () => {
-    return buffer.length;
-};
+const getBufferSize = () => buffer.length;
 
 const getBufferItem = (index) => {
     if (index < 0 || index >= buffer.length) {

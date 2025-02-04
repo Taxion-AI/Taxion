@@ -19,18 +19,32 @@ async function queryAI(prompt) {
         throw new Error('OpenAI API key is not set in the environment variables');
     }
 
-    const response = await axios.post('https://api.openai.com/v1/completions', {
-        model: "gpt-4-turbo-preview",
-        prompt: `Analyze the following intent: "${prompt}"`,
-        max_tokens: 100
-    }, {
-        headers: {
-            'Authorization': `Bearer ${openaiApiKey}`,
-            'Content-Type': 'application/json'
-        }
-    });
+    try {
+        const response = await axios.post('https://api.openai.com/v1/completions', {
+            model: "gpt-4-turbo-preview",
+            prompt: `Analyze the following intent: "${prompt}"`,
+            max_tokens: 100
+        }, {
+            headers: {
+                'Authorization': `Bearer ${openaiApiKey}`,
+                'Content-Type': 'application/json'
+            }
+        });
 
-    return response.data.choices[0].text.trim();
+        return response.data.choices[0].text.trim();
+    } catch (error) {
+        console.error('Error querying AI:', error.response ? error.response.data : error.message);
+        throw error;
+    }
+}
+
+function categorizeIntent(aiResult) {
+    for (const [category, actionsList] of Object.entries(actions)) {
+        if (actionsList.some(action => aiResult.includes(action))) {
+            return { category, action: aiResult };
+        }
+    }
+    return { category: "unknown", action: aiResult };
 }
 
 async function analyzeIntent(input) {
@@ -42,19 +56,8 @@ async function analyzeIntent(input) {
 
         for (const intent of intents) {
             const aiResult = await queryAI(intent);
-            let categorized = false;
-
-            for (const [category, actionsList] of Object.entries(actions)) {
-                if (actionsList.some(action => aiResult.includes(action))) {
-                    categorizedIntents.push({ category, action: aiResult });
-                    categorized = true;
-                    break;
-                }
-            }
-
-            if (!categorized) {
-                categorizedIntents.push({ category: "unknown", action: aiResult });
-            }
+            const categorizedIntent = categorizeIntent(aiResult);
+            categorizedIntents.push(categorizedIntent);
         }
 
         console.log('Categorized intents:', categorizedIntents);

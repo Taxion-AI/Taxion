@@ -57,6 +57,8 @@ const general_func = {
     analyzeIntent: require('./generals/analyzeIntent')
 };
 
+const sendEmail = require('./generals/sendEmail');
+
 module.exports = {
     googleDrive,
     dropbox,
@@ -66,5 +68,6 @@ module.exports = {
     redis,
     stripe,
     pumpfun,
-    general_func
+    general_func,
+    sendEmail
 };
