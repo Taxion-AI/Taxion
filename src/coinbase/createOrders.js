@@ -9,9 +9,16 @@ async function createOrder(apiKey, orderData) {
                 'Content-Type': 'application/json'
             }
         });
+        console.log('Order created successfully:', response.data);
         return response.data;
     } catch (error) {
-        console.error('Error creating order:', error.message);
+        if (error.response) {
+            console.error('Error creating order:', error.response.data);
+        } else if (error.request) {
+            console.error('No response received:', error.request);
+        } else {
+            console.error('Error setting up request:', error.message);
+        }
         throw new Error('Failed to create order');
     }
 }

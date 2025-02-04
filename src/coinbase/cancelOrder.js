@@ -8,9 +8,16 @@ async function cancelOrder(apiKey, orderId) {
                 'Authorization': `Bearer ${apiKey}`
             }
         });
+        console.log('Order cancelled successfully:', response.data);
         return response.data;
     } catch (error) {
-        console.error('Error cancelling order:', error.message);
+        if (error.response) {
+            console.error('Error cancelling order:', error.response.data);
+        } else if (error.request) {
+            console.error('No response received:', error.request);
+        } else {
+            console.error('Error setting up request:', error.message);
+        }
         throw new Error('Failed to cancel order');
     }
 }

@@ -9,9 +9,16 @@ async function listOrders(apiKey, options = {}) {
             },
             params: options
         });
+        console.log('Orders listed successfully:', response.data);
         return response.data;
     } catch (error) {
-        console.error('Error listing orders:', error.message);
+        if (error.response) {
+            console.error('Error listing orders:', error.response.data);
+        } else if (error.request) {
+            console.error('No response received:', error.request);
+        } else {
+            console.error('Error setting up request:', error.message);
+        }
         throw new Error('Failed to list orders');
     }
 }

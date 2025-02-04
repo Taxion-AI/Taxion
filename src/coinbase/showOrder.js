@@ -8,9 +8,16 @@ async function showOrder(apiKey, orderId) {
                 'Authorization': `Bearer ${apiKey}`
             }
         });
+        console.log('Order details retrieved successfully:', response.data);
         return response.data;
     } catch (error) {
-        console.error('Error showing order:', error.message);
+        if (error.response) {
+            console.error('Error showing order:', error.response.data);
+        } else if (error.request) {
+            console.error('No response received:', error.request);
+        } else {
+            console.error('Error setting up request:', error.message);
+        }
         throw new Error('Failed to show order');
     }
 }
