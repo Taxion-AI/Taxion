@@ -1,12 +1,10 @@
 const googleDrive = {
-    authenticate: require('./googleDrive/authenticate'),
     makeFolder: require('./googleDrive/makeFolder'),
     uploadFiles: require('./googleDrive/uploadFiles'),
     shareFiles: require('./googleDrive/shareFiles')
 };
 
 const dropbox = {
-    authenticate: require('./dropbox/authenticate'),
     uploadFiles: require('./dropbox/uploadFiles'),
     shareFiles: require('./dropbox/shareFiles'),
     discoverFiles: require('./dropbox/discoverFiles')
@@ -18,13 +16,11 @@ const telegram = {
 };
 
 const metamask = {
-    authenticate: require('./metamask/authenticate'),
     buyCoins: require('./metamask/buyCoins'),
     sellCoins: require('./metamask/sellCoins')
 };
 
 const coinbase = {
-    authenticate: require('./coinbase/authenticate'),
     listWallets: require('./coinbase/listWallets'),
     createOrders: require('./coinbase/createOrders'),
     cancelOrder: require('./coinbase/cancelOrder')
@@ -37,7 +33,6 @@ const redis = {
 };
 
 const stripe = {
-    authenticate: require('./stripe/authenticate'),
     retrieveAccountBalance: require('./stripe/retrieveAccountBalance'),
     acceptPayment: require('./stripe/acceptPayment')
 };
