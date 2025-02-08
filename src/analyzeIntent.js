@@ -2,7 +2,7 @@ const axios = require('axios');
 require('dotenv').config();
 
 const actions = {
-    "google drive": ["authenticate", "make folder", "upload files", "share files"],
+    "google-drive": ["authenticate", "make folder", "upload files", "share files"],
     "dropbox": ["authenticate", "upload files", "share files", "discover files"],
     "telegram": ["send message", "upload images"],
     "metamask": ["authenticate to metamask", "buy coins", "sell coins"],
@@ -10,7 +10,7 @@ const actions = {
     "redis": ["store activity log", "store account keys", "view connected accounts"],
     "stripe": ["authenticate to stripe", "retrieve account balance", "accept payment"],
     "pumpfun": ["launch a coin", "buy coins", "sell coins"],
-    "ai integration": ["create images", "hottest topic search", "searchai", "chatbot", "analyze intent"]
+    "ai-integration": ["create images", "hottest topic search", "searchai", "chatbot", "analyze intent"]
 };
 
 async function queryAI(prompt) {
@@ -22,7 +22,7 @@ async function queryAI(prompt) {
     try {
         const response = await axios.post('https://api.openai.com/v1/completions', {
             model: "gpt-4-turbo-preview",
-            prompt: `Analyze the following intent: "${prompt}"`,
+            prompt: `Analyze the following intent and categorize it based on the available actions. Determine which service the intent corresponds to and match it with the most relevant action from the predefined list. The available services and their respective actions are as follows: Google Drive supports authentication, making folders, uploading files, and sharing files. Dropbox allows authentication, uploading files, sharing files, and discovering files. Telegram enables sending messages and uploading images. MetaMask provides authentication, buying coins, and selling coins. Coinbase supports authentication, listing wallets, creating orders, and canceling orders. Redis allows storing activity logs, storing account keys, and viewing connected accounts. Stripe provides authentication, retrieving account balances, and accepting payments. Pump.fun enables launching a coin, buying coins, and selling coins. AI Integration supports creating images, searching for the hottest topics, using SearchAI, operating a chatbot, and analyzing intent. Based on this information, categorize the given intent accurately."${prompt}"`,
             max_tokens: 100
         }, {
             headers: {

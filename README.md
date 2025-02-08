@@ -19,7 +19,13 @@ To initialize the SDK, import and create an instance of the `Taxion` class:
 ```javascript
 const Taxion = require('taxion');
 
-const prompt = new Taxion();
+const config = {
+    "Telegram_UID": "YOUR-TELEGRAM-UID",
+    "Brevo_API-KEY": "YOUR-BREVO-APIKEY",
+    "Email": "email@domain.com"
+};
+
+const prompt = new Taxion(config);
 ```
 
 ### Methods
@@ -100,11 +106,16 @@ Here is an example of how to use the Taxion SDK to automate tasks:
 ```javascript
 const Taxion = require('taxion-sdk');
 
-const prompt = new Taxion();
+const config = {
+    "Telegram_UID": "YOUR-TELEGRAM-UID",
+    "Brevo_API-KEY": "YOUR-BREVO-APIKEY",
+    "Email": "email@domain.com"
+};
+
+const prompt = new Taxion(config);
 
 prompt.execute("Automate a daily report summarizing the latest news and stock price movements for Nvidia, Intel, and Microsoft. Report it daily into my email starting today")
-    .email("example@email.com")
-
+    .email("example@email.com");
 ```
 
 ### Detailed Execution Flow
@@ -116,10 +127,10 @@ When you execute a command like `prompt.execute("Automate a daily report summari
 2. **Structure Actions**: Based on the analyzed intent, the SDK structures an action plan. For the given example, the action plan would be:
     ```
     [!] Action Plan:
-    OTE/1   | Gather daily news on NVDA, INTC, and MSFT  | [HEAD]
-    OTE/2   | Fetch 1W stock price history               | [CHAINED]
-    OTE/3   | Generate summary using LLM                 | [CHAINED]
-    OTE/4   | Send & schedule daily email via Brevo      | [CHAINED]
+    Gather daily news on NVDA, INTC, and MSFT
+    Fetch 1W stock price history
+    Generate summary using LLM
+    Send & schedule daily email via Brevo
     ```
 
 3. **Execute Actions**: Each action is executed sequentially:
@@ -133,3 +144,59 @@ When you execute a command like `prompt.execute("Automate a daily report summari
 ### License
 
 This project is licensed under the MIT License.
+
+## Step-by-Step Guide
+
+### Step 1: SDK Initialization and Configs
+
+Seamlessly integrate Taxion with your project using the CommonJS module system. Simply configure essential items that will be executed like API keys and email in the config to unlock powerful automation capabilities.
+
+```javascript
+const taxion = require("taxion");
+
+const config = {
+    "Telegram_UID": "YOUR-TELEGRAM-UID",
+    "Brevo_API-KEY": "YOUR-BREVO-APIKEY",
+    "Email": "email@domain.com"
+};
+
+const prompt = new Taxion(config);
+```
+
+### Step 2: Unleash Intelligent Automation
+
+Let our LLM-powered SDK analyze your request and intelligently chain multiple actions into a structured execution plan. Sit back and watch as Taxion does the heavy lifting for you.
+
+```javascript
+prompt.execute("Automate a daily newsletter about BTC and ETH price trends for the past week, and send it to my email.");
+```
+
+### Step 3: Watch Taxion Work Its Magic
+
+Watch as our LLM breaks down the actions and executes them step-by-step, providing clarity throughout the entire process. Just wait a minute—and whoops! You've got a new email from Taxion Mail Services.
+
+### Example Action Plan
+
+```
+[!] Action Plan:
+OTE/1   | Gather daily news on BTC and ETH      | [HEAD]
+OTE/2   | Fetch 1W stock price history          | [CHAINED]
+OTE/3   | Generate summary using LLM            | [CHAINED]
+OTE/4   | Send & schedule daily email via Brevo | [CHAINED]
+
+```
+
+### Essential Items
+
+- `Telegram_API-KEY="YOUR_KEY"`: Send messages, upload images
+- `Telegram_UID="YOUR_UID"`: Identify your Telegram user for actions
+- `Brevo_API-KEY="YOUR_KEY"`: Automate email campaigns and notifications
+- `Email="your.email@domain.com"`: Set up email-based automation
+- `Stripe_Auth_Token="YOUR_AUTH_TOKEN"`: Secure authentication for payments
+- `Stripe_Campaign_Link="YOUR_LINK"`: Manage payment campaigns seamlessly
+- `Dropbox_Bearer_Token="YOUR_TOKEN"`: Upload, share, and access files
+- `GoogleDrive_API-KEY="YOUR_KEY"`: Create folders, upload, and share files
+- `MetaMask_Wallet="YOUR_WALLET_ADDRESS"`: Authenticate, buy, and sell coins
+- `Coinbase_API-KEY="YOUR_KEY"`: Manage wallets, create orders, and cancel trades
+- `PumpFun_Wallet="YOUR_WALLET_ADDRESS"`: Launch and trade crypto tokens
+- `Redis_Integration_Link="YOUR_LINK"`: Store logs, account keys, and manage connections
