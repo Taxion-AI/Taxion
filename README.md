@@ -127,10 +127,10 @@ When you execute a command like `prompt.execute("Automate a daily report summari
 2. **Structure Actions**: Based on the analyzed intent, the SDK structures an action plan. For the given example, the action plan would be:
     ```
     [!] Action Plan:
-    Gather daily news on NVDA, INTC, and MSFT
-    Fetch 1W stock price history
-    Generate summary using LLM
-    Send & schedule daily email via Brevo
+    OTE/1   | Gather daily news on NVDA, INTC, and MSFT  | [HEAD]
+    OTE/2   | Fetch 1W stock price history               | [CHAINED]
+    OTE/3   | Generate summary using LLM                 | [CHAINED]
+    OTE/4   | Send & schedule daily email via Brevo      | [CHAINED]
     ```
 
 3. **Execute Actions**: Each action is executed sequentially:
