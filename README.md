@@ -42,40 +42,136 @@ prompt.execute("Find the hottest in crypto right now, create a summary, and send
 
 ### Available Actions
 
-| Platform     | Action                  | Description                                                                                   |
-|--------------|-------------------------|-----------------------------------------------------------------------------------------------|
-| Google Drive | `authenticate`          | Authenticates the user with Google Drive.                                                     |
-|              | `makeFolder`            | Creates a new folder in Google Drive.                                                         |
-|              | `uploadFiles`           | Uploads files to Google Drive.                                                                |
-|              | `shareFiles`            | Shares files from Google Drive.                                                               |
-| Dropbox      | `authenticate`          | Authenticates the user with Dropbox.                                                          |
-|              | `uploadFiles`           | Uploads files to Dropbox.                                                                     |
-|              | `shareFiles`            | Shares files from Dropbox.                                                                    |
-|              | `discoverFiles`         | Discovers files in Dropbox.                                                                   |
-| Telegram     | `sendMessage`           | Sends a message via Telegram.                                                                 |
-|              | `uploadImages`          | Uploads images to Telegram.                                                                   |
-| Metamask     | `authenticate`          | Authenticates the user with Metamask.                                                         |
-|              | `buyCoins`              | Buys cryptocurrency using Metamask.                                                           |
-|              | `sellCoins`             | Sells cryptocurrency using Metamask.                                                          |
-| Coinbase     | `authenticate`          | Authenticates the user with Coinbase.                                                         |
-|              | `listWallets`           | Lists wallets in Coinbase.                                                                    |
-|              | `createOrders`          | Creates orders in Coinbase.                                                                   |
-|              | `cancelOrder`           | Cancels an order in Coinbase.                                                                 |
-| Redis        | `storeActivityLog`      | Stores activity logs in Redis.                                                                |
-|              | `storeAccountKeys`      | Stores account keys in Redis.                                                                 |
-|              | `viewConnectedAccounts` | Views connected accounts in Redis.                                                            |
-| Stripe       | `authenticate`          | Authenticates the user with Stripe.                                                           |
-|              | `retrieveAccountBalance`| Retrieves account balance from Stripe.                                                        |
-|              | `acceptPayment`         | Accepts payment via Stripe.                                                                   |
-| Pumpfun      | `launchCoin`            | Launches a new cryptocurrency.                                                                |
-|              | `buyCoins`              | Buys cryptocurrency.                                                                          |
-|              | `sellCoins`             | Sells cryptocurrency.                                                                         |
-|              | `aiIntegration`         | Integrates AI functionalities.                                                                |
-|              | `createImages`          | Creates images using AI.                                                                      |
-| General      | `hottestTopicSearch`    | Searches for the hottest topic.                                                               |
-|              | `searchAI`              | Searches using AI.                                                                            |
-|              | `chatbot`               | Interacts with the chatbot.                                                                   |
-|              | `analyzeIntent`         | Analyzes user intent.                                                                         |
+#### Google Drive
+
+Google Drive is a file storage and synchronization service developed by Google. It allows users to store files in the cloud, synchronize files across devices, and share files with others. The API endpoint for Google Drive is:
+
+```python
+https://www.googleapis.com/drive/v3
+```
+
+| Action         | Description                                                                                   |
+|----------------|-----------------------------------------------------------------------------------------------|
+| `authenticate` | Authenticates the user with Google Drive.                                                     |
+| `makeFolder`   | Creates a new folder in Google Drive.                                                         |
+| `uploadFiles`  | Uploads files to Google Drive.                                                                |
+| `shareFiles`   | Shares files from Google Drive.                                                               |
+
+#### Dropbox
+
+Dropbox is a file hosting service that offers cloud storage, file synchronization, personal cloud, and client software. The API endpoint for Dropbox is:
+
+```python
+https://api.dropboxapi.com/2/
+```
+
+| Action         | Description                                                                                   |
+|----------------|-----------------------------------------------------------------------------------------------|
+| `authenticate` | Authenticates the user with Dropbox.                                                          |
+| `uploadFiles`  | Uploads files to Dropbox.                                                                     |
+| `shareFiles`   | Shares files from Dropbox.                                                                    |
+| `discoverFiles`| Discovers files in Dropbox.                                                                   |
+
+#### Telegram
+
+Telegram is a cloud-based instant messaging, video telephony, and VoIP service. The API endpoint for Telegram is:
+
+```python
+https://api.telegram.org/bot
+```
+
+| Action         | Description                                                                                   |
+|----------------|-----------------------------------------------------------------------------------------------|
+| `sendMessage`  | Sends a message via Telegram.                                                                 |
+| `uploadImages` | Uploads images to Telegram.                                                                   |
+
+#### Metamask
+
+Metamask is a software cryptocurrency wallet used to interact with the Ethereum blockchain. The API endpoint for Metamask is:
+
+```python
+https://api.metamask.io/v1
+```
+
+| Action         | Description                                                                                   |
+|----------------|-----------------------------------------------------------------------------------------------|
+| `authenticate` | Authenticates the user with Metamask.                                                         |
+| `buyCoins`     | Buys cryptocurrency using Metamask.                                                           |
+| `sellCoins`    | Sells cryptocurrency using Metamask.                                                          |
+
+#### Coinbase
+
+Coinbase is a digital currency wallet and platform where merchants and consumers can transact with new digital currencies like bitcoin, ethereum, and litecoin. The API endpoint for Coinbase is:
+
+```python
+https://api.cdp.coinbase.com/v3/users
+```
+
+| Action         | Description                                                                                   |
+|----------------|-----------------------------------------------------------------------------------------------|
+| `authenticate` | Authenticates the user with Coinbase.                                                         |
+| `listWallets`  | Lists wallets in Coinbase.                                                                    |
+| `createOrders` | Creates orders in Coinbase.                                                                   |
+| `cancelOrder`  | Cancels an order in Coinbase.                                                                 |
+
+#### Redis
+
+Redis is an open-source, in-memory data structure store, used as a database, cache, and message broker. The API endpoint for Redis is:
+
+```python
+// No specific endpoint provided
+```
+
+| Action               | Description                                                                                   |
+|----------------------|-----------------------------------------------------------------------------------------------|
+| `storeActivityLog`   | Stores activity logs in Redis.                                                                |
+| `storeAccountKeys`   | Stores account keys in Redis.                                                                 |
+| `viewConnectedAccounts` | Views connected accounts in Redis.                                                            |
+
+#### Stripe
+
+Stripe is a technology company that builds economic infrastructure for the internet. Businesses of all sizes use the software to accept payments and manage their businesses online. The API endpoint for Stripe is:
+
+```python
+https://api.stripe.com/v1
+```
+
+| Action               | Description                                                                                   |
+|----------------------|-----------------------------------------------------------------------------------------------|
+| `authenticate`       | Authenticates the user with Stripe.                                                           |
+| `retrieveAccountBalance` | Retrieves account balance from Stripe.                                                        |
+| `acceptPayment`      | Accepts payment via Stripe.                                                                   |
+
+#### Pumpfun
+
+Pumpfun is a platform for launching and trading cryptocurrencies. The API endpoint for Pumpfun is:
+
+```python
+https://api.pumpfun.com/v1
+```
+
+| Action               | Description                                                                                   |
+|----------------------|-----------------------------------------------------------------------------------------------|
+| `launchCoin`         | Launches a new cryptocurrency.                                                                |
+| `buyCoins`           | Buys cryptocurrency.                                                                          |
+| `sellCoins`          | Sells cryptocurrency.                                                                         |
+| `aiIntegration`      | Integrates AI functionalities.                                                                |
+| `createImages`       | Creates images using AI.                                                                      |
+
+#### General Functions
+
+General functions are common actions that can be performed across multiple platforms. The API endpoint for OpenAI is:
+
+```python
+https://await.chat.openai.com/api
+```
+
+| Action               | Description                                                                                   |
+|----------------------|-----------------------------------------------------------------------------------------------|
+| `hottestTopicSearch` | Searches for the hottest topic.                                                               |
+| `searchAI`           | Searches using AI.                                                                            |
+| `chatbot`            | Interacts with the chatbot.                                                                   |
+| `analyzeIntent`      | Analyzes user intent.                                                                         |
 
 ## Example
 
