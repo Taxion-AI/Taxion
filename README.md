@@ -1,4 +1,6 @@
 # Taxion SDK
+![](https://img.shields.io/badge/License-MIT-blue) ![](https://img.shields.io/badge/SDK%20Version-v1.2.10-cyan) ![](https://img.shields.io/badge/Downloads-30k%2B-green)
+
 
 Taxion is an AI-driven SDK designed to automate and streamline various tasks by integrating with multiple services such as Google Drive, Dropbox, Telegram, Metamask, Coinbase, Redis, Stripe, and more. This document provides a comprehensive technical overview of the SDK, including usage instructions and available actions.
 
@@ -40,64 +42,40 @@ prompt.execute("Find the hottest in crypto right now, create a summary, and send
 
 ### Available Actions
 
-#### Google Drive
-
-- `authenticate`: Authenticates the user with Google Drive.
-- `makeFolder`: Creates a new folder in Google Drive.
-- `uploadFiles`: Uploads files to Google Drive.
-- `shareFiles`: Shares files from Google Drive.
-
-#### Dropbox
-
-- `authenticate`: Authenticates the user with Dropbox.
-- `uploadFiles`: Uploads files to Dropbox.
-- `shareFiles`: Shares files from Dropbox.
-- `discoverFiles`: Discovers files in Dropbox.
-
-#### Telegram
-
-- `sendMessage`: Sends a message via Telegram.
-- `uploadImages`: Uploads images to Telegram.
-
-#### Metamask
-
-- `authenticate`: Authenticates the user with Metamask.
-- `buyCoins`: Buys cryptocurrency using Metamask.
-- `sellCoins`: Sells cryptocurrency using Metamask.
-
-#### Coinbase
-
-- `authenticate`: Authenticates the user with Coinbase.
-- `listWallets`: Lists wallets in Coinbase.
-- `createOrders`: Creates orders in Coinbase.
-- `cancelOrder`: Cancels an order in Coinbase.
-
-#### Redis
-
-- `storeActivityLog`: Stores activity logs in Redis.
-- `storeAccountKeys`: Stores account keys in Redis.
-- `viewConnectedAccounts`: Views connected accounts in Redis.
-
-#### Stripe
-
-- `authenticate`: Authenticates the user with Stripe.
-- `retrieveAccountBalance`: Retrieves account balance from Stripe.
-- `acceptPayment`: Accepts payment via Stripe.
-
-#### Pumpfun
-
-- `launchCoin`: Launches a new cryptocurrency.
-- `buyCoins`: Buys cryptocurrency.
-- `sellCoins`: Sells cryptocurrency.
-- `aiIntegration`: Integrates AI functionalities.
-- `createImages`: Creates images using AI.
-
-#### General Functions
-
-- `hottestTopicSearch`: Searches for the hottest topic.
-- `searchAI`: Searches using AI.
-- `chatbot`: Interacts with the chatbot.
-- `analyzeIntent`: Analyzes user intent.
+| Platform     | Action                  | Description                                                                                   |
+|--------------|-------------------------|-----------------------------------------------------------------------------------------------|
+| Google Drive | `authenticate`          | Authenticates the user with Google Drive.                                                     |
+|              | `makeFolder`            | Creates a new folder in Google Drive.                                                         |
+|              | `uploadFiles`           | Uploads files to Google Drive.                                                                |
+|              | `shareFiles`            | Shares files from Google Drive.                                                               |
+| Dropbox      | `authenticate`          | Authenticates the user with Dropbox.                                                          |
+|              | `uploadFiles`           | Uploads files to Dropbox.                                                                     |
+|              | `shareFiles`            | Shares files from Dropbox.                                                                    |
+|              | `discoverFiles`         | Discovers files in Dropbox.                                                                   |
+| Telegram     | `sendMessage`           | Sends a message via Telegram.                                                                 |
+|              | `uploadImages`          | Uploads images to Telegram.                                                                   |
+| Metamask     | `authenticate`          | Authenticates the user with Metamask.                                                         |
+|              | `buyCoins`              | Buys cryptocurrency using Metamask.                                                           |
+|              | `sellCoins`             | Sells cryptocurrency using Metamask.                                                          |
+| Coinbase     | `authenticate`          | Authenticates the user with Coinbase.                                                         |
+|              | `listWallets`           | Lists wallets in Coinbase.                                                                    |
+|              | `createOrders`          | Creates orders in Coinbase.                                                                   |
+|              | `cancelOrder`           | Cancels an order in Coinbase.                                                                 |
+| Redis        | `storeActivityLog`      | Stores activity logs in Redis.                                                                |
+|              | `storeAccountKeys`      | Stores account keys in Redis.                                                                 |
+|              | `viewConnectedAccounts` | Views connected accounts in Redis.                                                            |
+| Stripe       | `authenticate`          | Authenticates the user with Stripe.                                                           |
+|              | `retrieveAccountBalance`| Retrieves account balance from Stripe.                                                        |
+|              | `acceptPayment`         | Accepts payment via Stripe.                                                                   |
+| Pumpfun      | `launchCoin`            | Launches a new cryptocurrency.                                                                |
+|              | `buyCoins`              | Buys cryptocurrency.                                                                          |
+|              | `sellCoins`             | Sells cryptocurrency.                                                                         |
+|              | `aiIntegration`         | Integrates AI functionalities.                                                                |
+|              | `createImages`          | Creates images using AI.                                                                      |
+| General      | `hottestTopicSearch`    | Searches for the hottest topic.                                                               |
+|              | `searchAI`              | Searches using AI.                                                                            |
+|              | `chatbot`               | Interacts with the chatbot.                                                                   |
+|              | `analyzeIntent`         | Analyzes user intent.                                                                         |
 
 ## Example
 
@@ -175,28 +153,21 @@ prompt.execute("Automate a daily newsletter about BTC and ETH price trends for t
 
 Watch as our LLM breaks down the actions and executes them step-by-step, providing clarity throughout the entire process. Just wait a minute—and whoops! You've got a new email from Taxion Mail Services.
 
-### Example Action Plan
+## Essential Items
 
-```
-[!] Action Plan:
-OTE/1   | Gather daily news on BTC and ETH      | [HEAD]
-OTE/2   | Fetch 1W stock price history          | [CHAINED]
-OTE/3   | Generate summary using LLM            | [CHAINED]
-OTE/4   | Send & schedule daily email via Brevo | [CHAINED]
+Essential items are the configuration parameters required to unlock the full potential of the Taxion SDK. These items include API keys, user identifiers, and other credentials necessary for authenticating and interacting with various integrated services. Properly configuring these items ensures seamless automation and integration with the services you intend to use.
 
-```
-
-### Essential Items
-
-- `Telegram_API-KEY="YOUR_KEY"`: Send messages, upload images
-- `Telegram_UID="YOUR_UID"`: Identify your Telegram user for actions
-- `Brevo_API-KEY="YOUR_KEY"`: Automate email campaigns and notifications
-- `Email="your.email@domain.com"`: Set up email-based automation
-- `Stripe_Auth_Token="YOUR_AUTH_TOKEN"`: Secure authentication for payments
-- `Stripe_Campaign_Link="YOUR_LINK"`: Manage payment campaigns seamlessly
-- `Dropbox_Bearer_Token="YOUR_TOKEN"`: Upload, share, and access files
-- `GoogleDrive_API-KEY="YOUR_KEY"`: Create folders, upload, and share files
-- `MetaMask_Wallet="YOUR_WALLET_ADDRESS"`: Authenticate, buy, and sell coins
-- `Coinbase_API-KEY="YOUR_KEY"`: Manage wallets, create orders, and cancel trades
-- `PumpFun_Wallet="YOUR_WALLET_ADDRESS"`: Launch and trade crypto tokens
-- `Redis_Integration_Link="YOUR_LINK"`: Store logs, account keys, and manage connections
+| Item                    | Description                                                                                   |
+|-------------------------|-----------------------------------------------------------------------------------------------|
+| `Telegram_API-KEY`      | Send messages, upload images                                                                  |
+| `Telegram_UID`          | Identify your Telegram user for actions                                                       |
+| `Brevo_API-KEY`         | Automate email campaigns and notifications                                                    |
+| `Email`                 | Set up email-based automation                                                                 |
+| `Stripe_Auth_Token`     | Secure authentication for payments                                                            |
+| `Stripe_Campaign_Link`  | Manage payment campaigns seamlessly                                                           |
+| `Dropbox_Bearer_Token`  | Upload, share, and access files                                                               |
+| `GoogleDrive_API-KEY`   | Create folders, upload, and share files                                                       |
+| `MetaMask_Wallet`       | Authenticate, buy, and sell coins                                                             |
+| `Coinbase_API-KEY`      | Manage wallets, create orders, and cancel trades                                              |
+| `PumpFun_Wallet`        | Launch and trade crypto tokens                                                                |
+| `Redis_Integration_Link`| Store logs, account keys, and manage connections                                              |
