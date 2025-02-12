@@ -1,5 +1,5 @@
 # Taxion SDK
-![](https://img.shields.io/badge/License-MIT-blue) ![](https://img.shields.io/badge/SDK%20Version-v1.2.10-cyan) ![](https://img.shields.io/badge/Downloads-30k%2B-green)
+![](https://img.shields.io/badge/License-MIT-blue) ![](https://img.shields.io/badge/SDK%20Version-v1.2.10-blue) ![](https://img.shields.io/badge/Downloads-30k%2B-green)
 
 
 Taxion is an AI-driven SDK designed to automate and streamline various tasks by integrating with multiple services such as Google Drive, Dropbox, Telegram, Metamask, Coinbase, Redis, Stripe, and more. This document provides a comprehensive technical overview of the SDK, including usage instructions and available actions.
