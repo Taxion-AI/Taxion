@@ -1,4 +1,6 @@
-# Taxion SDK
+# Taxion SDK  
+![](https://i.imgur.com/bMTru35.png)   
+
 ![](https://img.shields.io/badge/License-MIT-blue) ![](https://img.shields.io/badge/SDK%20Version-v1.2.10-blue) ![](https://img.shields.io/badge/Downloads-30k%2B-green)
 
 
